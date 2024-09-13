@@ -70,11 +70,11 @@ const Footer = () => {
                     <Typography variant="body2" component="p" align="center"> Made with love by Me.
                     </Typography>
                     <Typography variant="body2" component="p" align="center">
-                        Icons made by{''}
+                        Icons made by{' '}
                         <Link href="https://www.freepik.com" color="inherit" underline="always">
                             Freepik
-                        </Link>{' '}
-                        from{''}
+                        </Link>{'  '}
+                        from{' '}
                         <Link href="https://www.flaticon.com/" color="inherit" underline="always">
                             www.flaticon.com
                         </Link>

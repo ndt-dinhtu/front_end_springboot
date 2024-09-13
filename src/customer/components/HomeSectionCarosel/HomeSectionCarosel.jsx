@@ -37,7 +37,7 @@ const HomeSectionCarousel = ({ data, sectionName }) => {
                 {activeIndex < items.length - 5 && (
                     <Button
                         variant="contained"
-                        className="z-50 bg-white"
+                        className="z-5 bg-white"
                         onClick={slideNext}
                         sx={{
                             position: 'absolute',
@@ -55,7 +55,7 @@ const HomeSectionCarousel = ({ data, sectionName }) => {
                     <Button
                         variant="contained"
                         onClick={slidePrev}
-                        className="z-50 bg-white"
+                        className="z-5 bg-white"
                         sx={{
                             position: 'absolute',
                             top: "8rem",
