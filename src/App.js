@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './customer/components/Footer/Footer';
 import Nagivation from './customer/components/Navigation/Nagivation';
 import Product from './customer/components/Product/Product';
+import ProductDetails from './customer/components/ProductDetails/ProductDetails';
 import HomePage from './customer/pages/HomePage/HomePage';
 
 
@@ -12,7 +13,8 @@ function App() {
       <Nagivation />
       <div>
         {/* <HomePage /> */}
-        <Product />
+        {/* <Product /> */}
+        <ProductDetails />
       </div>
       <div>
         <Footer />

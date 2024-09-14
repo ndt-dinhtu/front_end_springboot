@@ -186,7 +186,7 @@ export default function Nagivation() {
               <TabPanels as={Fragment}>
                 {navigation.categories.map((category) => (
                   <TabPanel key={category.name} className="space-y-10 px-4 pb-8 pt-10">
-                    <div className="grid grid-cols-2 gap-x-4">
+                    <div className="Grid Grid-cols-2 gap-x-4">
                       {category.featured.map((item) => (
                         <div key={item.name} className="group relative text-sm">
                           <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
@@ -208,7 +208,7 @@ export default function Nagivation() {
                           {section.name}
                         </p>
                         <ul
-                       
+
                           aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
                           className="mt-6 flex flex-col space-y-6"
                         >
@@ -266,7 +266,7 @@ export default function Nagivation() {
       </Dialog>
 
       <header className="relative bg-white">
-  
+
 
         <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="border-b border-gray-200">
@@ -307,16 +307,16 @@ export default function Nagivation() {
                       <PopoverPanel
                         transition
                         className="absolute inset-x-0 top-full text-sm text-gray-500 transition data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
-                        style={{zIndex:10}}
-                        
+                        style={{ zIndex: 10 }}
+
                       >
                         {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                         <div aria-hidden="true" className="absolute inset-0 top-1/2 bg-white shadow" />
 
                         <div className="relative bg-white">
                           <div className="mx-auto max-w-7xl px-8">
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                              <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                            <div className="Grid Grid-cols-2 gap-x-8 gap-y-10 py-16">
+                              <div className="col-start-2 Grid Grid-cols-2 gap-x-8">
                                 {category.featured.map((item) => (
                                   <div key={item.name} className="group relative text-base sm:text-sm">
                                     <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
@@ -336,14 +336,14 @@ export default function Nagivation() {
                                   </div>
                                 ))}
                               </div>
-                              <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                              <div className="row-start-1 Grid Grid-cols-3 gap-x-8 gap-y-10 text-sm">
                                 {category.sections.map((section) => (
                                   <div key={section.name}>
                                     <p id={`${section.name}-heading`} className="font-medium text-gray-900">
                                       {section.name}
                                     </p>
                                     <ul
-                                   
+
                                       aria-labelledby={`${section.name}-heading`}
                                       className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                     >
