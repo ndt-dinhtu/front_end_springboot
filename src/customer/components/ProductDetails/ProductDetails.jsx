@@ -6,6 +6,8 @@ import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { Box, Grid, LinearProgress, Rating } from '@mui/material'
 import ProductReviewCard from './ProductReviewCard'
+import { Product_Ao } from "../../../data/Product_Ao"
+import HomeSectionCard from "../HomeSectionCard/HomeSectionCard"
 
 const product = {
     name: 'Basic Tee 6-Pack',
@@ -287,6 +289,7 @@ export default function ProductDetails() {
                     </div>
 
                 </section>
+
                 {/**Rating and review */}
                 <section>
                     <h1 className="font-semibold text-lg pb-4">Recent Review & Rating</h1>
@@ -358,6 +361,18 @@ export default function ProductDetails() {
 
                     </div>
                 </section>
+
+                {/* similer product */}
+
+                <section className="pt-10">
+                    <h1 className="py-5 text-xl font-bold">Similar Products</h1>
+                    <div className="flex flex-wrap justify-between gap-5">
+                        {Product_Ao.map((item) => (
+                            <HomeSectionCard key={item.title} product={item} />
+                        ))}
+                    </div>
+                </section>
+
             </div >
         </div >
     )
