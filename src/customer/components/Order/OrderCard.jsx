@@ -1,10 +1,16 @@
 import { Grid } from '@mui/material'
 import React from 'react'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { useNavigate } from 'react-router-dom';
 
 const OrderCard = () => {
+    const navigate= useNavigate()
+
+    const handleOrderCard = ()=>{
+        navigate(`/account/order/${5}`)
+    }
     return (
-        <div className='p-10 shadow-md shadow-black hover:shadow-2xl'>
+        <div onClick={handleOrderCard} className='p-10 shadow-md shadow-black hover:shadow-2xl'>
             <Grid container spacing={2} sx={{ justifyContent: "space-between" }}>
 
                 <Grid item xs={6}>

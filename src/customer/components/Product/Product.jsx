@@ -183,7 +183,7 @@ export default function Product() {
                             </Menu>
 
                             <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
-                                <span className="sr-only">View Grid</span>
+                                <span className="sr-only">View grid</span>
                                 <Squares2X2Icon aria-hidden="true" className="h-5 w-5" />
                             </button>
                             <button
@@ -203,7 +203,7 @@ export default function Product() {
                         </h2>
 
 
-                        <div className="Grid Grid-cols-1 gap-x-8 gap-y-10 lg:Grid-cols-5">
+                        <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
                             {/* Filters */}
 
                             <div>
@@ -288,7 +288,7 @@ export default function Product() {
                                 </form>
 
                             </div>
-                            {/* Product Grid */}
+                            {/* Product grid */}
                             <div className="lg:col-span-4 w-full" >
                                 <div className='flex flex-wrap justify-center bg-white py-5 '>
                                     {Product_Ao.map((item) => <ProductCard product={item} />)}
