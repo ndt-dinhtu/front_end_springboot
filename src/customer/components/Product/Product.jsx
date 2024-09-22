@@ -38,6 +38,8 @@ export default function Product() {
     const location = useLocation()
     const navigate = useNavigate()
 
+    
+
     const handleFilter = (value, sectionId) => {
         const searchParamms = new URLSearchParams(location.search)
         let filterValue = searchParamms.getAll(sectionId)
