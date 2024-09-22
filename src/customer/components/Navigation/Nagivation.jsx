@@ -16,6 +16,7 @@ import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import { navigation } from "./NagivationData";
 import { useNavigate } from "react-router-dom";
+import AuthModal from "../../Auth/AuthModal";
 
 
 
@@ -53,9 +54,11 @@ export default function Navigation() {
     close();
   };
 
-  const handleMyOrder=()=>{
+  const handleMyOrder = () => {
     navigate("/account/order")
   }
+
+
 
   return (
     <div className="bg-white pb-10">
@@ -225,9 +228,6 @@ export default function Navigation() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Get free delivery on orders over $100
-        </p>
 
         <nav aria-label="Top" className="mx-auto">
           <div className="border-b border-gray-200">
@@ -387,7 +387,7 @@ export default function Navigation() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {true ? (
+                  {false ? (
                     <div>
                       <Avatar
                         className="text-white"
@@ -472,6 +472,7 @@ export default function Navigation() {
         </nav>
       </header>
 
+      <AuthModal handleClose={handleClose} open={openAuthModal} />
     </div>
   );
 }
