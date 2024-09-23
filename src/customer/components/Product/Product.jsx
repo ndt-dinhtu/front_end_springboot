@@ -51,7 +51,7 @@ export default function Product() {
     const sortValue = searchParamms.get("sort");
     const pageNumber = searchParamms.get("page") || 1;
     const stock = searchParamms.get("stock");
-    const { product } = useSelector(store => store)
+    const { products } = useSelector(store => store)
 
     useEffect(() => {
         const [minPrice, maxPrice] = priceValue === null ? [0, 10000000] : priceValue.split("-").map(Number);
@@ -342,7 +342,7 @@ export default function Product() {
                             {/* Product grid */}
                             <div className="lg:col-span-4 w-full" >
                                 <div className='flex flex-wrap justify-center bg-white py-5'>
-                                    {product.products && product.products?.content?.map((item) => (
+                                    {products.products && products.products?.content?.map((item) => (
                                         <ProductCard key={item.id} product={item} />
                                     ))}
                                 </div>
@@ -352,7 +352,7 @@ export default function Product() {
                     </section>
                     <section className="w-full px=[3.6rem]">
                         <div className="px-4 py-5 flex justify-center ">
-                            <Pagination count={product.products?.totalPages} color="secondary"
+                            <Pagination count={products.products?.totalPages} color="secondary"
                                 onChange={handlePaginationChange} />
                         </div>
                     </section>

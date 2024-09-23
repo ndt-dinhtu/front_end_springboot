@@ -10,6 +10,7 @@ import HomeSectionCard from "../HomeSectionCard/HomeSectionCard"
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { findProductsById } from '../../../State/Product/Action'
+import { addItemToCart } from '../../../State/Cart/Reducer'
 
 const product = {
     name: 'Basic Tee 6-Pack',
@@ -71,7 +72,7 @@ function classNames(...classes) {
 
 export default function ProductDetails() {
     const [selectedSize, setSelectedSize] = useState("")
-    const navigation = useNavigate()
+    const navigate = useNavigate()
     const params = useParams()
     const dispatch = useDispatch()
     const { products } = useSelector(store => store)
@@ -79,7 +80,10 @@ export default function ProductDetails() {
     console.log("param: ", params)
 
     const handleAddToCart = () => {
-        navigation("/cart")
+        const data = { productId: params.productId, size: selectedSize.name }
+        console.log("data", data)
+        dispatch(addItemToCart(data))
+        navigate("/cart")
     }
 
     useEffect(() => {
