@@ -17,13 +17,13 @@ import {
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
 import ProductCard from './ProductCard'
-import { Product_Ao } from '../../../data/Product_Ao'
 import { filters, singleFilter } from './FilterData'
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { findProducts } from '../../../State/Product/Action'
+import Pagination from '@mui/material/Pagination';
 
 const sortOptions = [
     { name: 'Price: Low to High', href: '#', current: false },
@@ -51,10 +51,10 @@ export default function Product() {
     const sortValue = searchParamms.get("sort");
     const pageNumber = searchParamms.get("page") || 1;
     const stock = searchParamms.get("stock");
-
+    const { product } = useSelector(store => store)
 
     useEffect(() => {
-        const [minPrice, maxPrice] = priceValue === null ? [0, 10000] : priceValue.split("-").map(Number);
+        const [minPrice, maxPrice] = priceValue === null ? [0, 10000000] : priceValue.split("-").map(Number);
 
         const data = {
             category: param.levelThree,
@@ -65,16 +65,9 @@ export default function Product() {
             minDiscount: disccount || 0,
             sort: sortValue || "price_low",
             pageNumber: pageNumber - 1,
-            pageSize: 10,
+            pageSize: 12,
             stock: stock
         };
-        console.log("Colors:", colorValue);
-        console.log("Sizes:", sizeValue);
-        console.log("Price:", priceValue);
-        console.log("Discount:", disccount);
-        console.log("Sort:", sortValue);
-        console.log("Page Number:", pageNumber);
-        console.log("Stock:", stock);
 
         dispatch(findProducts(data))
 
@@ -122,7 +115,12 @@ export default function Product() {
 
     }
 
-
+    const handlePaginationChange = (event, value) => {
+        const searchParamms = new URLSearchParams(location.search)
+        searchParamms.set("page", value);
+        const query = searchParamms.toString();
+        navigate({ search: `?${query}` })
+    }
 
     return (
         <div className="bg-white">
@@ -343,10 +341,19 @@ export default function Product() {
                             </div>
                             {/* Product grid */}
                             <div className="lg:col-span-4 w-full" >
-                                <div className='flex flex-wrap justify-center bg-white py-5 '>
-                                    {Product_Ao.map((item) => <ProductCard product={item} />)}
+                                <div className='flex flex-wrap justify-center bg-white py-5'>
+                                    {product.products && product.products?.content?.map((item) => (
+                                        <ProductCard key={item.id} product={item} />
+                                    ))}
                                 </div>
+
                             </div>
+                        </div>
+                    </section>
+                    <section className="w-full px=[3.6rem]">
+                        <div className="px-4 py-5 flex justify-center ">
+                            <Pagination count={product.products?.totalPages} color="secondary"
+                                onChange={handlePaginationChange} />
                         </div>
                     </section>
                 </main>
