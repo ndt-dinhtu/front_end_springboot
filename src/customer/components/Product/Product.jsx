@@ -1,7 +1,7 @@
 
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
     Dialog,
     DialogBackdrop,
@@ -21,7 +21,9 @@ import { Product_Ao } from '../../../data/Product_Ao'
 import { filters, singleFilter } from './FilterData'
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { findProducts } from '../../../State/Product/Action'
 
 const sortOptions = [
     { name: 'Price: Low to High', href: '#', current: false },
@@ -37,8 +39,56 @@ export default function Product() {
 
     const location = useLocation()
     const navigate = useNavigate()
+    const param = useParams()
+    const dispatch = useDispatch()
 
-    
+    const decodedQueryString = decodeURIComponent(location.search);
+    const searchParamms = new URLSearchParams(decodedQueryString);
+    const colorValue = searchParamms.get("color")
+    const sizeValue = searchParamms.get("size")
+    const priceValue = searchParamms.get("price")
+    const disccount = searchParamms.get("disccount")
+    const sortValue = searchParamms.get("sort");
+    const pageNumber = searchParamms.get("page") || 1;
+    const stock = searchParamms.get("stock");
+
+
+    useEffect(() => {
+        const [minPrice, maxPrice] = priceValue === null ? [0, 10000] : priceValue.split("-").map(Number);
+
+        const data = {
+            category: param.levelThree,
+            colors: colorValue || [],
+            sizes: sizeValue || [],
+            minPrice,
+            maxPrice,
+            minDiscount: disccount || 0,
+            sort: sortValue || "price_low",
+            pageNumber: pageNumber - 1,
+            pageSize: 10,
+            stock: stock
+        };
+        console.log("Colors:", colorValue);
+        console.log("Sizes:", sizeValue);
+        console.log("Price:", priceValue);
+        console.log("Discount:", disccount);
+        console.log("Sort:", sortValue);
+        console.log("Page Number:", pageNumber);
+        console.log("Stock:", stock);
+
+        dispatch(findProducts(data))
+
+    }, [param.levelThree,
+        colorValue,
+        sizeValue,
+        priceValue,
+        disccount,
+        sortValue,
+        pageNumber,
+        stock,
+        dispatch
+    ]);
+
 
     const handleFilter = (value, sectionId) => {
         const searchParamms = new URLSearchParams(location.search)
@@ -71,6 +121,7 @@ export default function Product() {
         })
 
     }
+
 
 
     return (
