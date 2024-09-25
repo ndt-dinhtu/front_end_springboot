@@ -1,5 +1,5 @@
 'use client'
-
+import logo from "../../../assets/logo.jpg"
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
@@ -15,7 +15,7 @@ import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 
 import { deepPurple } from "@mui/material/colors";
 import { navigation } from "./NagivationData";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthModal from "../../Auth/AuthModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, logout } from "../../../State/Auth/Action";
@@ -267,11 +267,13 @@ export default function Navigation() {
               <div className="ml-4 flex lg:ml-0">
 
                 <span className="sr-only">Your Company</span>
-                <img
-                  src="https://res.cloudinary.com/ddkso1wxi/image/upload/v1675919455/Logo/Copy_of_Zosh_Academy_nblljp.png"
-                  alt="Shopwithzosh"
-                  className="h-8 w-8 mr-2"
-                />
+                <Link to="/">
+                  <img
+                    src={logo}
+                    alt="Shopwithzosh"
+                    className="h-8 w-8 mr-2"
+                  />
+                </Link>
 
               </div>
 
@@ -478,12 +480,14 @@ export default function Navigation() {
 
                     className="group -m-2 flex items-center p-2"
                   >
-                    <ShoppingBagIcon
-                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
+                    <Link to="/cart">
+                      <ShoppingBagIcon
+                        className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                    </Link>
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      2
+                      
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Button>
