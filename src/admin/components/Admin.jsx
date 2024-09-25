@@ -1,5 +1,5 @@
 
-import { CssBaseline, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, useMediaQuery, useTheme } from '@mui/material';
+import { CssBaseline, List, ListItem, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom';
@@ -10,8 +10,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ProductTable from "./ProductTable"
 import OrderTable from "./OrderTable"
 import CreateProductForm from "./CreateProductForm"
-import Dashboard from "./Dashboard"
 import CustommerTable from "./CustommerTable"
+import AdminDashboard from './AdminDashboard';
 
 
 
@@ -71,23 +71,17 @@ const Admin = () => {
 
     return (
         <div>
-            <Box sx={{ display: `${isLargeScreen}?"flex":"block"` }}>
+            <div className='flex h-[100vh]'>
                 <CssBaseline />
 
-                <Drawer variant='permanent'
-                    sx={{
-                        height: "100vh",
-                        border: "1px solid black",
-                        width: 240,
-                        flexShrink: 0
-                    }}>
+                <div className='w-[15%] border border-r-gray-300 h-full'>
                     {drawer}
-                </Drawer>
+                </div>
 
-                <Box>
+                <div className='w-[85%]'>
                     <Routes>
 
-                        <Route path='/admin' element={<Dashboard />}></Route>
+                        <Route path='/' element={<AdminDashboard />}></Route>
 
                         <Route path='/product/create' element={<CreateProductForm />}></Route>
 
@@ -98,8 +92,8 @@ const Admin = () => {
                         <Route path='/customers' element={<CustommerTable />}></Route>
 
                     </Routes>
-                </Box>
-            </Box>
+                </div>
+            </div>
         </div>
     )
 }
