@@ -1,17 +1,18 @@
 
-import { CssBaseline, List, ListItem, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
+import { CssBaseline, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useState } from 'react'
+import React from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import ArchiveIcon from '@mui/icons-material/Archive';
+// import MailOutlineIcon from '@mui/icons-material/MailOutline';
+// import ArchiveIcon from '@mui/icons-material/Archive';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ProductTable from "./ProductTable"
-import OrderTable from "./OrderTable"
-import CreateProductForm from "./CreateProductForm"
-import CustommerTable from "./CustommerTable"
-import AdminDashboard from './AdminDashboard';
+import CreateProductForm from './components/CreateProductForm';
+import AdminDashboard from './components/AdminDashboard';
+import ProductTable from './components/ProductTable';
+import OrderTable from './components/OrderTable';
+import CustommerTable from './components/CustommerTable';
+
 
 
 
@@ -24,9 +25,9 @@ const menu = [
 ]
 
 const Admin = () => {
-    const theme = useTheme();
-    const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
-    const [sideBarVisible, setSideBarVisible] = useState(false);
+  //  const theme = useTheme();
+    // const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
+    // const [sideBarVisible, setSideBarVisible] = useState(false);
     const navigate = useNavigate();
 
     const drawer = (
@@ -71,14 +72,14 @@ const Admin = () => {
 
     return (
         <div>
-            <div className='flex h-[100vh]'>
+            <div className='relative flex h-[100vh]'>
                 <CssBaseline />
 
-                <div className='w-[15%] border border-r-gray-300 h-full'>
+                <div className='w-[15%] border border-r-gray-300 h-full fixed top-0 '>
                     {drawer}
                 </div>
 
-                <div className='w-[85%]'>
+                <div className='w-[85%] h-full ml-[15%]'>
                     <Routes>
 
                         <Route path='/' element={<AdminDashboard />}></Route>

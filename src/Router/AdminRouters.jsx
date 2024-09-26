@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Admin from '../admin/components/Admin'
+import Admin from '../admin/Admin'
 
 const AdminRouters = () => {
     return (
@@ -13,3 +13,4 @@ const AdminRouters = () => {
 }   
 
 export default AdminRouters
+ 

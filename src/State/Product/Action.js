@@ -36,14 +36,17 @@ export const findProductsById = (reqData) => async (dispatch) => {
 }
 
 export const createProduct = (product) => async (dispatch) => {
+    console.log("create product data", product)
     try {
         dispatch({ type: CREATE_PRODUCT_REQUEST })
-        const { data } = await api.post(`${API_BASE_URL}/api/admin/products`, product.data);
+        const { data } = await api.post(`/api/admin/products/`, product);
+        console.log('create products', data)
         dispatch({
             type: CREATE_PRODUCT_SUCCESS,
             payload: data,
         })
     } catch (error) {
+        console.log("error create product: ", error)
         dispatch({ type: CREATE_PRODUCT_FAILURE, payload: error.message })
     }
 }
@@ -55,7 +58,7 @@ export const deleteProduct = (productId) => async (dispatch) => {
         dispatch({
             type: DELETE_PRODUCT_SUCCESS,
             payload: productId,
-        })  
+        })
     } catch (error) {
         dispatch({ type: DELETE_PRODUCT_FAILURE, payload: error.message })
     }
