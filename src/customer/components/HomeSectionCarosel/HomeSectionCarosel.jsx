@@ -19,7 +19,7 @@ const HomeSectionCarousel = ({ data, sectionName }) => {
 
     const syncActiveIndex = ({ item }) => setActiveIndex(item);
 
-    const items = data.slice(0, 10).map((item, index) => <HomeSectionCard key={index} product={item} />);
+    const items = data.slice(0, 100).map((item, index) => <HomeSectionCard key={index} product={item} />);
 
     return (
         <div className='border carousel-wrapper'>

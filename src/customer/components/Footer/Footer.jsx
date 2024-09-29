@@ -1,5 +1,6 @@
 import { Button, Grid, Link, Typography } from '@mui/material'
 import React from 'react'
+import Admin from "../../../admin/Admin"
 const Footer = () => {
     return (
         <div>
@@ -61,7 +62,9 @@ const Footer = () => {
                         <Button className='pb-5' variant='h6'>Privacy</Button>
                     </div>
                     <div>
-                        <Button className='pb-5' variant='h6'>Term</Button>
+                        <Link path="/admin" element={<Admin/>}>
+                            <Button className='pb-5' variant='h6'>Admin</Button>
+                        </Link>
                     </div>
                 </Grid>
                 <Grid className='pt-20' item xs={12} >

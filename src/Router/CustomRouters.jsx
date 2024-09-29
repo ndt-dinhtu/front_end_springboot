@@ -10,6 +10,8 @@ import ProductDetails from "../customer/components/ProductDetails/ProductDetails
 import Checkout from "../customer/components/Checkout/Checkout"
 import Order from "../customer/components/Order/Order"
 import OrderDetails from "../customer/components/Order/OrderDetails"
+import AboutUs from '../customer/pages/About/AboutUs'
+import Contact from '../customer/pages/Contact/Contact'
 
 const CustomRouters = () => {
     return (
@@ -17,7 +19,7 @@ const CustomRouters = () => {
             <div>
                 <Navigation />
             </div>
-            <Routes> 
+            <Routes>
                 <Route path='/login' element={<HomePage />}></Route>
                 <Route path='/register' element={<HomePage />}></Route>
                 <Route path='/' element={<HomePage />}></Route>
@@ -27,6 +29,8 @@ const CustomRouters = () => {
                 <Route path='/checkout' element={<Checkout />}></Route>
                 <Route path='/account/order' element={<Order />} ></Route>
                 <Route path='/account/order/:orderId' element={<OrderDetails />} ></Route>
+                <Route path='/aboutUs' element={AboutUs} ></Route>
+                <Route path='/contact' element={<Contact />} ></Route>
             </Routes>
             <div>
                 <Footer />

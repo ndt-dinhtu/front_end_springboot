@@ -65,7 +65,7 @@ export default function Product() {
             minDiscount: disccount || 0,
             sort: sortValue || "price_low",
             pageNumber: pageNumber - 1,
-            pageSize: 12,
+            pageSize: 100,
             stock: stock
         };
 
